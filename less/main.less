@@ -1,0 +1,84 @@
+@import 'normalize.less';
+@import 'grid.less';
+
+@column-width: 60;
+@gutter-width: 20;
+@columns: 12;
+@total-width: 100%;
+
+body{
+    background-color: black;
+}
+
+.mymixin(){
+    background-color: white;
+    height:5em;
+
+}
+
+header {
+    .column(12);
+    .mymixin();
+    margin-bottom: 1em;
+}
+article {
+    .column(9);
+    .mymixin();
+}
+aside {
+    .column(3);
+    .mymixin();
+
+}
+
+@media screen and (max-width: 960px) {
+   article { .column(12);
+    .mymixin();
+    margin-bottom: 1em;
+   }
+   aside { .column(12); .mymixin();}
+}
+
+
+.container{
+    .column(@columns);
+    background-color: grey;
+    height: auto;
+    margin-bottom: @gutter-width;
+}
+
+.row{
+    .row(@columns);
+}
+
+.block{
+    .column(3,@columns);
+    height:10em;
+    background-color: white;
+    margin-bottom: @gutter-width;
+}
+ul{
+    .row(@columns);
+    li{
+    .column(3,@columns);
+    margin:@gutter-width;
+    background-color: white;
+
+    }
+
+}
+
+
+
+@media screen and (max-width: 400px) {
+
+.container{
+    .column(12);
+}
+.block{
+    .column(1,1);
+    height:10em;
+    background-color: white;
+    margin-bottom: @gutter-width;
+}
+}
